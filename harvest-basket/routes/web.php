@@ -21,3 +21,7 @@ Route::get('/chackout', function () {
 Route::get('/contact', function () {
     return view('store.contact');
 })->name('store.contact');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::view('/', 'admin.dashboard')->name('dashboard');
+});
