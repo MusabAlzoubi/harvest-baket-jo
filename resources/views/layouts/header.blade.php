@@ -24,7 +24,7 @@
                     <a href="{{ route('store.home') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'home' ? 'active' : '' }}">Home</a>
                     <a href="{{ route('store.shop') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'shop' ? 'active' : '' }}">Shop</a>
                     <a href="{{ route('store.cart') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'cart' ? 'active' : '' }}">Shop Cart</a>
-                    <a href="{{ route('store.checkout') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'checkout' ? 'active' : '' }}">Chackout</a>
+                    <a href="{{ route('store.checkout') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'checkout' ? 'active' : '' }}">Checkout</a>
                     <a href="{{ route('store.contact') }}" class="nav-item nav-link {{ ($activePage ?? '') === 'contact' ? 'active' : '' }}">Contact</a>
                 </div>
                 <div class="d-flex m-3 me-0">

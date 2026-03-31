@@ -14,9 +14,11 @@ Route::get('/cart', function () {
     return view('store.cart');
 })->name('store.cart');
 
-Route::get('/chackout', function () {
-    return view('store.chackout');
+Route::get('/checkout', function () {
+    return view('store.checkout');
 })->name('store.checkout');
+
+Route::redirect('/chackout', '/checkout', 301);
 
 Route::get('/contact', function () {
     return view('store.contact');
