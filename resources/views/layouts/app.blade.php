@@ -1,9 +1,18 @@
+@php
+    if (request()->has('lang') && in_array(request('lang'), ['ar', 'en'], true)) {
+        session(['locale' => request('lang')]);
+    }
+
+    $locale = session('locale', 'ar');
+    app()->setLocale($locale);
+    $isArabic = $locale === 'ar';
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $locale }}" dir="{{ $isArabic ? 'rtl' : 'ltr' }}">
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>{{ __('ui.site_title') }}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -11,7 +20,7 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -37,7 +46,7 @@
         </div>
         <!-- Spinner End -->
 
-        @include('layouts.header')
+        @include('layouts.header', ['locale' => $locale, 'isArabic' => $isArabic])
 
         @yield('content')
 
