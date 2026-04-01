@@ -60,4 +60,37 @@ return [
     'address_label' => 'العنوان',
     'whatsapp_label' => 'واتساب',
     'phone_label' => 'الهاتف',
+
+    'home_intro' => 'خضار وفواكه صنف أول يومياً، مونة بلدية مختارة بعناية، وتوصيل مريح لحد باب البيت.',
+    'products_subtitle' => 'كل الأصناف مختارة بنفس الروح: جودة تفرق وطزاجة تشوفها بعينك.',
+    'cat_vegetables_desc' => 'خضار يومية طازجة للطبخ اليومي والمونة.',
+    'cat_fruits_desc' => 'فواكه موسمية بجودة ممتازة وطعم غني.',
+    'cat_pantry_desc' => 'مونة بلدية مثل ورق العنب والزيتون والمقدوس.',
+    'cat_seasonal_desc' => 'عروض موسمية مثل اللوز الأخضر والمنتجات المحدودة.',
+
+    'shop_title' => 'متجر سلة الحصاد',
+    'shop_subtitle' => 'أسعار واضحة ومنتجات طازجة يومياً مع خدمة قريبة منكم.',
+    'search_btn' => 'بحث',
+    'product_green_almond' => 'لوز أخضر',
+    'product_green_almond_desc' => 'وصل الموسم! طازج ومقرمش والكمية محدودة.',
+    'product_grape_leaves' => 'ورق عنب',
+    'product_grape_leaves_desc' => 'مناسب للمحاشي والمونة بجودة بيتية.',
+    'product_molokhia' => 'ملوخية خضراء',
+    'product_molokhia_desc' => 'ورق طازج للتفريز أو طبخة اليوم.',
+    'price_sample_1' => '2.50 د.أ',
+    'price_sample_2' => '3.00 د.أ',
+    'price_sample_3' => '1.75 د.أ',
+    'price_total_sample' => '8.50 د.أ',
+
+    'cart_title' => 'سلة المشتريات',
+    'item' => 'الصنف',
+    'quantity' => 'الكمية',
+    'price' => 'السعر',
+    'total' => 'الإجمالي',
+    'cart_note_title' => 'ملاحظة مهمة',
+    'cart_note_desc' => 'للتأكيد السريع على الطلب، تواصل معنا مباشرة على واتساب 0779154999.',
+
+    'checkout_title' => 'إتمام الطلب',
+    'order_summary' => 'ملخص الطلب',
 ];
+

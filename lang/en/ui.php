@@ -60,4 +60,37 @@ return [
     'address_label' => 'Address',
     'whatsapp_label' => 'WhatsApp',
     'phone_label' => 'Phone',
+
+    'home_intro' => 'Daily first-grade vegetables and fruits, selected pantry essentials, and convenient delivery to your doorstep.',
+    'products_subtitle' => 'Every item follows one promise: visible freshness and quality you can trust.',
+    'cat_vegetables_desc' => 'Fresh daily vegetables for everyday cooking and home prep.',
+    'cat_fruits_desc' => 'Seasonal fruits with excellent quality and flavor.',
+    'cat_pantry_desc' => 'Traditional pantry picks like grape leaves, olives, and makdous.',
+    'cat_seasonal_desc' => 'Seasonal offers like green almonds and limited-time products.',
+
+    'shop_title' => 'Harvest Basket Shop',
+    'shop_subtitle' => 'Clear prices, daily freshness, and a friendly neighborhood service.',
+    'search_btn' => 'Search',
+    'product_green_almond' => 'Green Almonds',
+    'product_green_almond_desc' => 'Season is here! Fresh, crunchy, and limited quantity.',
+    'product_grape_leaves' => 'Grape Leaves',
+    'product_grape_leaves_desc' => 'Perfect for stuffed dishes and pantry prep.',
+    'product_molokhia' => 'Fresh Molokhia',
+    'product_molokhia_desc' => 'Fresh leaves for freezing or today\'s meal.',
+    'price_sample_1' => '2.50 JOD',
+    'price_sample_2' => '3.00 JOD',
+    'price_sample_3' => '1.75 JOD',
+    'price_total_sample' => '8.50 JOD',
+
+    'cart_title' => 'Shopping Cart',
+    'item' => 'Item',
+    'quantity' => 'Quantity',
+    'price' => 'Price',
+    'total' => 'Total',
+    'cart_note_title' => 'Important note',
+    'cart_note_desc' => 'For fast order confirmation, contact us directly on WhatsApp: 0779154999.',
+
+    'checkout_title' => 'Checkout',
+    'order_summary' => 'Order summary',
 ];
+
