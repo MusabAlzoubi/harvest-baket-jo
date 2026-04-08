@@ -88,6 +88,9 @@ class ProductSeeder extends Seeder
             ['ar' => 'مربى دبس عنب 380 غرام', 'en' => 'Grape Molasses Jam 380g', 'category' => 'pantry-home-products', 'price' => 2.50, 'unit' => '380 غرام', 'desc' => 'مربى دبس عنب 380غ.'],
             ['ar' => 'دبس تمر 380 غرام', 'en' => 'Date Molasses 380g', 'category' => 'dates', 'price' => 2.50, 'unit' => '380 غرام', 'desc' => 'دبس تمر 380غ.'],
             ['ar' => 'بيض بلدي الطبق', 'en' => 'Local Eggs Tray', 'category' => 'pantry-home-products', 'price' => 4.50, 'unit' => 'طبق', 'desc' => 'بيض بلدي طبق.'],
+            ['ar' => 'بيض مزارع طازج طبق 30 بيضة', 'en' => 'Farm Fresh Eggs Tray 30', 'category' => 'pantry-home-products', 'price' => 4.25, 'unit' => 'طبق 30 بيضة', 'desc' => 'بيض مزارع طازج - طبق 30 بيضة.'],
+            ['ar' => 'بيض صفارين طبق 15 بيضة', 'en' => 'Double Yolk Eggs Tray 15', 'category' => 'pantry-home-products', 'price' => 3.25, 'unit' => 'طبق 15 بيضة', 'desc' => 'بيض صفارين - طبق 15 بيضة.'],
+            ['ar' => 'بيض صفارين طبق 30 بيضة', 'en' => 'Double Yolk Eggs Tray 30', 'category' => 'pantry-home-products', 'price' => 6.25, 'unit' => 'طبق 30 بيضة', 'desc' => 'بيض صفارين - طبق 30 بيضة.'],
         ];
 
         foreach ($products as $item) {
