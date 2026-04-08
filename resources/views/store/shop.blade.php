@@ -13,32 +13,45 @@
 
 <div class="container-fluid py-5">
     <div class="container">
-        <div class="row g-3 mb-4">
-            <div class="col-md-6">
-                <div class="stats-card">
-                    <h6 class="mb-1">{{ __('ui.products_count_label') }}</h6>
-                    <h4 class="mb-0">{{ $stats['products_count'] }}</h4>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="stats-card">
-                    <h6 class="mb-1">{{ __('ui.categories_count_label') }}</h6>
-                    <h4 class="mb-0">{{ $stats['categories_count'] }}</h4>
-                </div>
-            </div>
-        </div>
+        @php
+            $themeFallbackImages = [
+                asset('img/fruite-item-1.jpg'),
+                asset('img/fruite-item-2.jpg'),
+                asset('img/fruite-item-3.jpg'),
+                asset('img/fruite-item-4.jpg'),
+                asset('img/fruite-item-5.jpg'),
+                asset('img/fruite-item-6.jpg'),
+                asset('img/vegetable-item-1.jpg'),
+                asset('img/vegetable-item-2.jpg'),
+                asset('img/vegetable-item-4.jpg'),
+                asset('img/vegetable-item-5.jpg'),
+                asset('img/vegetable-item-6.jpg'),
+                asset('img/best-product-1.jpg'),
+                asset('img/best-product-2.jpg'),
+            ];
+        @endphp
 
         <div class="row g-4 mb-4 align-items-center">
-            <div class="col-lg-8">
-                <h2 class="text-primary">{{ __('ui.shop_title') }}</h2>
+            <div class="col-lg-7">
+                <h2 class="text-primary mb-1">{{ __('ui.shop_title') }}</h2>
                 <p class="mb-0">{{ __('ui.shop_subtitle') }}</p>
             </div>
-            <div class="col-lg-4">
-                <form method="GET" action="{{ route('store.shop') }}" class="input-group">
+            <div class="col-lg-5">
+                <form method="GET" action="{{ route('store.shop') }}" class="input-group mb-3 mb-lg-2">
                     <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
                     <input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="{{ __('ui.search_placeholder') }}">
                     <button class="btn btn-primary">{{ __('ui.search_btn') }}</button>
                 </form>
+                <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+                    <div class="stats-pill">
+                        <span class="stats-pill-label">{{ __('ui.products_count_label') }}</span>
+                        <strong>{{ $stats['products_count'] }}</strong>
+                    </div>
+                    <div class="stats-pill">
+                        <span class="stats-pill-label">{{ __('ui.categories_count_label') }}</span>
+                        <strong>{{ $stats['categories_count'] }}</strong>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -63,13 +76,17 @@
             <div class="col-lg-9">
                 <div class="row g-4">
                     @forelse($products as $product)
+                        @php
+                            $fallbackImage = $themeFallbackImages[$loop->index % count($themeFallbackImages)];
+                            $productImage = filled($product->image) ? $product->image : $fallbackImage;
+                        @endphp
                         <div class="col-md-6 col-lg-4">
                             <div class="border rounded p-3 h-100 bg-white shadow-sm">
                                 <a href="{{ route('store.products.show', ['lang' => app()->getLocale(), 'product' => $product]) }}">
-                                    <img src="{{ $product->image ?: asset('img/fruite-item-1.jpg') }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $product->localizedName(app()->getLocale()) }}">
+                                    <img src="{{ $productImage }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $product->localizedName(app()->getLocale()) }}">
                                 </a>
                                 <h6><a class="text-dark" href="{{ route('store.products.show', ['lang' => app()->getLocale(), 'product' => $product]) }}">{{ $product->localizedName(app()->getLocale()) }}</a></h6>
-                                <p class="small text-muted mb-2">{{ \\Illuminate\\Support\\Str::limit($product->localizedDescription(app()->getLocale()), 70) }}</p>
+                                <p class="small text-muted mb-2">{{ \Illuminate\Support\Str::limit($product->localizedDescription(app()->getLocale()), 70) }}</p>
                                 <p class="mb-3"><strong>{{ number_format($product->displayPrice(), 2) }} {{ __('ui.currency') }}</strong> / {{ $product->base_unit }}</p>
                                 <form action="{{ route('store.cart.add', $product) }}" method="POST" class="d-flex gap-2">
                                     @csrf
