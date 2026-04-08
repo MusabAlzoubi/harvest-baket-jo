@@ -32,9 +32,9 @@
                 <div class="d-flex m-3 me-0 align-items-center gap-3">
                     <a href="{{ url()->current() }}?lang={{ $switchLocale }}" class="btn btn-outline-secondary rounded-pill px-3">{{ __('ui.lang_switch') }}</a>
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                    <a href="#" class="position-relative my-auto">
+                    <a href="{{ route('store.cart', ['lang' => $locale ?? app()->getLocale()]) }}" class="position-relative my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
-                        <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                        <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{ $cartCount }}</span>
                     </a>
                 </div>
             </div>
