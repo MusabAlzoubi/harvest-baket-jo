@@ -6,6 +6,8 @@ return [
     'tagline' => 'خير من القلب للقلب',
     'address' => 'شفا بدران – شارع رفعت الشموط (مقابل مخابز فورنو)',
     'phone' => '0779154999',
+    'whatsapp_url' => 'https://wa.me/962779154999',
+    'map_url' => 'https://maps.app.goo.gl/eDf8ydLzjPTEX3HMA',
     'nav_home' => 'الرئيسية',
     'nav_shop' => 'المتجر',
     'nav_cart' => 'السلة',
@@ -32,6 +34,7 @@ return [
     'feature_pick_desc' => 'من أرضنا… لرفوفنا… لسلتك',
     'feature_service_title' => 'خدمة قريبة',
     'feature_service_desc' => 'نختار ونحضّر… كأنها لبيتنا',
+    'designed_by' => 'تصميم وتطوير MUSAB ALZOUBI',
 
     'products_title' => 'منتجات سلة الحصاد اليومية',
     'tab_all' => 'كل المنتجات',
@@ -93,4 +96,3 @@ return [
     'checkout_title' => 'إتمام الطلب',
     'order_summary' => 'ملخص الطلب',
 ];
-

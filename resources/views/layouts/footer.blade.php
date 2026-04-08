@@ -38,9 +38,9 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-item">
                     <h4 class="text-light mb-3">{{ __('ui.contact_info') }}</h4>
-                    <p>📍 {{ __('ui.address') }}</p>
+                    <p>📍 <a class="text-white-50" href="{{ __('ui.map_url') }}" target="_blank" rel="noopener">{{ __('ui.address') }}</a></p>
                     <p>📞 {{ __('ui.phone') }}</p>
-                    <p>💬 WhatsApp: {{ __('ui.phone') }}</p>
+                    <p>💬 WhatsApp: <a class="text-white-50" href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener">{{ __('ui.phone') }}</a></p>
                     <p>🧺 {{ __('ui.choose_like_home') }}</p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>{{ __('ui.brand') }}</a>، {{ __('ui.rights') }}</span>
             </div>
             <div class="col-md-6 my-auto text-center text-md-end text-white">
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                {{ __('ui.designed_by') }}
             </div>
         </div>
     </div>

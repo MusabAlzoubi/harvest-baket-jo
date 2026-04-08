@@ -88,12 +88,21 @@ class ProductSeeder extends Seeder
             ['ar' => 'مربى دبس عنب 380 غرام', 'en' => 'Grape Molasses Jam 380g', 'category' => 'pantry-home-products', 'price' => 2.50, 'unit' => '380 غرام', 'desc' => 'مربى دبس عنب 380غ.'],
             ['ar' => 'دبس تمر 380 غرام', 'en' => 'Date Molasses 380g', 'category' => 'dates', 'price' => 2.50, 'unit' => '380 غرام', 'desc' => 'دبس تمر 380غ.'],
             ['ar' => 'بيض بلدي الطبق', 'en' => 'Local Eggs Tray', 'category' => 'pantry-home-products', 'price' => 4.50, 'unit' => 'طبق', 'desc' => 'بيض بلدي طبق.'],
+            ['ar' => 'بيض مزارع طازج طبق 30 بيضة', 'en' => 'Farm Fresh Eggs Tray 30', 'category' => 'pantry-home-products', 'price' => 4.25, 'unit' => 'طبق 30 بيضة', 'desc' => 'بيض مزارع طازج - طبق 30 بيضة.'],
+            ['ar' => 'بيض صفارين طبق 15 بيضة', 'en' => 'Double Yolk Eggs Tray 15', 'category' => 'pantry-home-products', 'price' => 3.25, 'unit' => 'طبق 15 بيضة', 'desc' => 'بيض صفارين - طبق 15 بيضة.'],
+            ['ar' => 'بيض صفارين طبق 30 بيضة', 'en' => 'Double Yolk Eggs Tray 30', 'category' => 'pantry-home-products', 'price' => 6.25, 'unit' => 'طبق 30 بيضة', 'desc' => 'بيض صفارين - طبق 30 بيضة.'],
         ];
 
         foreach ($products as $item) {
             $slug = Str::slug($item['en']);
             $categoryId = $categoryMap[$item['category']] ?? null;
             $imageUrl = 'https://source.unsplash.com/1200x900/?' . urlencode($item['en'] . ',food');
+            $sku = 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8));
+
+            // Prevent collisions for similarly named products (e.g. hot/sweet pepper paste).
+            if (DB::table('products')->where('sku', $sku)->where('slug', '!=', $slug)->exists()) {
+                $sku .= '-' . strtoupper(Str::substr(md5($slug), 0, 4));
+            }
 
             DB::table('products')->updateOrInsert(
                 ['slug' => $slug],
@@ -102,7 +111,7 @@ class ProductSeeder extends Seeder
                     'name' => $item['en'],
                     'name_ar' => $item['ar'],
                     'name_en' => $item['en'],
-                    'sku' => 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8)),
+                    'sku' => $sku,
                     'description' => $item['desc'],
                     'description_ar' => $item['desc'],
                     'description_en' => $item['desc'],

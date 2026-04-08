@@ -6,6 +6,8 @@ return [
     'tagline' => 'Goodness from heart to home',
     'address' => 'Shafa Badran – Refaat Al-Shmout St. (Opposite Forno Bakery)',
     'phone' => '0779154999',
+    'whatsapp_url' => 'https://wa.me/962779154999',
+    'map_url' => 'https://maps.app.goo.gl/eDf8ydLzjPTEX3HMA',
     'nav_home' => 'Home',
     'nav_shop' => 'Shop',
     'nav_cart' => 'Cart',
@@ -32,6 +34,7 @@ return [
     'feature_pick_desc' => 'From our land... to our shelves... to your basket',
     'feature_service_title' => 'Friendly service',
     'feature_service_desc' => 'We prepare your order as if it is for our own home',
+    'designed_by' => 'Designed by MUSAB ALZOUBI',
 
     'products_title' => 'Harvest Basket daily products',
     'tab_all' => 'All products',
@@ -93,4 +96,3 @@ return [
     'checkout_title' => 'Checkout',
     'order_summary' => 'Order summary',
 ];
-
