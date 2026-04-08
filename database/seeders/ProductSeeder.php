@@ -94,6 +94,12 @@ class ProductSeeder extends Seeder
             $slug = Str::slug($item['en']);
             $categoryId = $categoryMap[$item['category']] ?? null;
             $imageUrl = 'https://source.unsplash.com/1200x900/?' . urlencode($item['en'] . ',food');
+            $sku = 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8));
+
+            // Prevent collisions for similarly named products (e.g. hot/sweet pepper paste).
+            if (DB::table('products')->where('sku', $sku)->where('slug', '!=', $slug)->exists()) {
+                $sku .= '-' . strtoupper(Str::substr(md5($slug), 0, 4));
+            }
 
             DB::table('products')->updateOrInsert(
                 ['slug' => $slug],
@@ -102,7 +108,7 @@ class ProductSeeder extends Seeder
                     'name' => $item['en'],
                     'name_ar' => $item['ar'],
                     'name_en' => $item['en'],
-                    'sku' => 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8)),
+                    'sku' => $sku,
                     'description' => $item['desc'],
                     'description_ar' => $item['desc'],
                     'description_en' => $item['desc'],
