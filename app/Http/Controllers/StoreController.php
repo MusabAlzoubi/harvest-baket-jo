@@ -28,7 +28,44 @@ class StoreController extends Controller
             ->take(8)
             ->get();
 
-        return view('store.index', compact('categories', 'featuredProducts', 'locale'));
+        $stats = $this->storeStats();
+
+        return view('store.index', compact('categories', 'featuredProducts', 'stats', 'locale'));
+    }
+
+    public function categories(Request $request): View
+    {
+        $locale = $this->resolveLocale($request);
+
+        $categories = Category::query()
+            ->where('is_active', true)
+            ->withCount(['products' => fn ($query) => $query->where('is_active', true)])
+            ->orderBy('sort_order')
+            ->paginate(9)
+            ->withQueryString();
+
+        $stats = $this->storeStats();
+
+        return view('store.categories', compact('categories', 'stats', 'locale'));
+    }
+
+    public function categoryShow(Request $request, Category $category): View
+    {
+        $locale = $this->resolveLocale($request);
+
+        $products = Product::query()
+            ->where('is_active', true)
+            ->where('category_id', $category->id)
+            ->orderBy('id', 'desc')
+            ->paginate(12)
+            ->withQueryString();
+
+        return view('store.category-show', [
+            'category' => $category,
+            'products' => $products,
+            'stats' => $this->storeStats(),
+            'locale' => $locale,
+        ]);
     }
 
     public function shop(Request $request): View
@@ -58,7 +95,32 @@ class StoreController extends Controller
 
         $products = $productsQuery->paginate(12)->withQueryString();
 
-        return view('store.shop', compact('categories', 'products', 'locale'));
+        return view('store.shop', [
+            'categories' => $categories,
+            'products' => $products,
+            'stats' => $this->storeStats(),
+            'locale' => $locale,
+        ]);
+    }
+
+    public function productShow(Request $request, Product $product): View
+    {
+        $locale = $this->resolveLocale($request);
+
+        $relatedProducts = Product::query()
+            ->where('is_active', true)
+            ->where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->latest('id')
+            ->take(4)
+            ->get();
+
+        return view('store.product-show', [
+            'product' => $product,
+            'relatedProducts' => $relatedProducts,
+            'stats' => $this->storeStats(),
+            'locale' => $locale,
+        ]);
     }
 
     public function cart(Request $request): View
@@ -172,5 +234,13 @@ class StoreController extends Controller
         $subtotal = $items->sum('line_total');
 
         return ['items' => $items, 'subtotal' => $subtotal];
+    }
+
+    private function storeStats(): array
+    {
+        return [
+            'products_count' => Product::query()->where('is_active', true)->count(),
+            'categories_count' => Category::query()->where('is_active', true)->count(),
+        ];
     }
 }

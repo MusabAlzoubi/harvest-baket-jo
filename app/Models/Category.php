@@ -32,6 +32,11 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function localizedName(string $locale): string
     {
         return $locale === 'en'

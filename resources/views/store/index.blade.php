@@ -22,6 +22,23 @@
     </div>
 </div>
 
+<div class="container py-4">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h6 class="mb-1">{{ __('ui.products_count_label') }}</h6>
+                <h4 class="mb-0">{{ $stats['products_count'] }}</h4>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h6 class="mb-1">{{ __('ui.categories_count_label') }}</h6>
+                <h4 class="mb-0">{{ $stats['categories_count'] }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row g-4">
@@ -76,7 +93,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="border rounded p-3 h-100 bg-white">
                         <img src="{{ $category->image ?: asset('img/vegetable-item-1.jpg') }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $category->localizedName(app()->getLocale()) }}">
-                        <h5>{{ $category->localizedName(app()->getLocale()) }}</h5>
+                        <h5><a class='text-dark' href='{{ route('store.categories.show', ['lang' => app()->getLocale(), 'category' => $category]) }}'>{{ $category->localizedName(app()->getLocale()) }}</a></h5>
                         <p class="mb-0">{{ $category->localizedDescription(app()->getLocale()) }}</p>
                     </div>
                 </div>
@@ -101,7 +118,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="border rounded p-3 h-100 bg-white">
                         <img src="{{ $product->image ?: asset('img/fruite-item-1.jpg') }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $product->localizedName(app()->getLocale()) }}">
-                        <h6 class="mb-1">{{ $product->localizedName(app()->getLocale()) }}</h6>
+                        <h6 class="mb-1"><a class='text-dark' href='{{ route('store.products.show', ['lang' => app()->getLocale(), 'product' => $product]) }}'>{{ $product->localizedName(app()->getLocale()) }}</a></h6>
                         <p class="small text-muted mb-2">{{ optional($product->category)->localizedName(app()->getLocale()) }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <strong>{{ number_format($product->displayPrice(), 2) }} {{ __('ui.currency') }}</strong>

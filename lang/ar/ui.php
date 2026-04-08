@@ -37,6 +37,13 @@ return [
     'designed_by' => 'تصميم وتطوير MUSAB ALZOUBI',
 
 
+
+    'products_count_label' => 'عدد المنتجات',
+    'categories_count_label' => 'عدد التصنيفات',
+    'view_all' => 'عرض الكل',
+    'shop_this_category' => 'تسوق هذا التصنيف',
+    'related_products' => 'منتجات مشابهة',
+
     'categories_title' => 'التصنيفات',
     'categories_subtitle' => 'تصفح الأصناف الرئيسية واختر القسم المناسب بسرعة.',
     'view_all_products' => 'عرض كل المنتجات',

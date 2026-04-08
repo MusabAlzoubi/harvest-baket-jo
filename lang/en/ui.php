@@ -37,6 +37,13 @@ return [
     'designed_by' => 'Designed by MUSAB ALZOUBI',
 
 
+
+    'products_count_label' => 'Products count',
+    'categories_count_label' => 'Categories count',
+    'view_all' => 'View all',
+    'shop_this_category' => 'Shop this category',
+    'related_products' => 'Related products',
+
     'categories_title' => 'Categories',
     'categories_subtitle' => 'Browse main categories and jump to what you need quickly.',
     'view_all_products' => 'View all products',
