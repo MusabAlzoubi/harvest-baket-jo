@@ -474,6 +474,22 @@
     object-fit: cover;
 }
 
+
+.stats-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 999px;
+    padding: 6px 12px;
+    color: #495057;
+}
+
+.stats-pill-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
 .stats-card {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border: 1px solid #e9ecef;
