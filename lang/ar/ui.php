@@ -36,6 +36,28 @@ return [
     'feature_service_desc' => 'نختار ونحضّر… كأنها لبيتنا',
     'designed_by' => 'تصميم وتطوير MUSAB ALZOUBI',
 
+
+
+    'products_count_label' => 'عدد المنتجات',
+    'categories_count_label' => 'عدد التصنيفات',
+    'view_all' => 'عرض الكل',
+    'shop_this_category' => 'تسوق هذا التصنيف',
+    'related_products' => 'منتجات مشابهة',
+
+    'categories_title' => 'التصنيفات',
+    'categories_subtitle' => 'تصفح الأصناف الرئيسية واختر القسم المناسب بسرعة.',
+    'view_all_products' => 'عرض كل المنتجات',
+    'no_categories' => 'لا توجد تصنيفات متاحة حالياً.',
+    'no_products' => 'لا توجد منتجات مطابقة حالياً.',
+    'add_to_cart' => 'أضف للسلة',
+    'added_to_cart' => 'تمت إضافة المنتج إلى السلة.',
+    'cart_updated' => 'تم تحديث السلة.',
+    'item_removed' => 'تم حذف المنتج من السلة.',
+    'cart_empty' => 'السلة فارغة حالياً.',
+    'update' => 'تحديث',
+    'remove' => 'حذف',
+    'currency' => 'د.أ',
+
     'products_title' => 'منتجات سلة الحصاد اليومية',
     'tab_all' => 'كل المنتجات',
     'tab_vegetables' => 'خضار',

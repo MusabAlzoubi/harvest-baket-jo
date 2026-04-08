@@ -36,6 +36,28 @@ return [
     'feature_service_desc' => 'We prepare your order as if it is for our own home',
     'designed_by' => 'Designed by MUSAB ALZOUBI',
 
+
+
+    'products_count_label' => 'Products count',
+    'categories_count_label' => 'Categories count',
+    'view_all' => 'View all',
+    'shop_this_category' => 'Shop this category',
+    'related_products' => 'Related products',
+
+    'categories_title' => 'Categories',
+    'categories_subtitle' => 'Browse main categories and jump to what you need quickly.',
+    'view_all_products' => 'View all products',
+    'no_categories' => 'No categories are available right now.',
+    'no_products' => 'No matching products found right now.',
+    'add_to_cart' => 'Add to cart',
+    'added_to_cart' => 'Product added to cart.',
+    'cart_updated' => 'Cart updated successfully.',
+    'item_removed' => 'Item removed from cart.',
+    'cart_empty' => 'Your cart is currently empty.',
+    'update' => 'Update',
+    'remove' => 'Remove',
+    'currency' => 'JOD',
+
     'products_title' => 'Harvest Basket daily products',
     'tab_all' => 'All products',
     'tab_vegetables' => 'Vegetables',

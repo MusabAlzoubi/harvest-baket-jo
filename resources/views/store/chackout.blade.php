@@ -41,12 +41,15 @@
             <div class="col-lg-5">
                 <div class="bg-white border rounded p-4">
                     <h5>{{ __('ui.order_summary') }}</h5>
-                    <p class="mb-2">{{ __('ui.product_green_almond') }} × 1</p>
-                    <p class="mb-2">{{ __('ui.product_grape_leaves') }} × 2</p>
+                    @forelse($cartItems as $item)
+                        <p class="mb-2">{{ $item['product']->localizedName(app()->getLocale()) }} × {{ $item['quantity'] }}</p>
+                    @empty
+                        <p class="mb-2">{{ __('ui.cart_empty') }}</p>
+                    @endforelse
                     <hr>
                     <div class="d-flex justify-content-between">
                         <strong>{{ __('ui.total') }}</strong>
-                        <strong>{{ __('ui.price_total_sample') }}</strong>
+                        <strong>{{ number_format($subtotal, 2) }} {{ __('ui.currency') }}</strong>
                     </div>
                 </div>
             </div>

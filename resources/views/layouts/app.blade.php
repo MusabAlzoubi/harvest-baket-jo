@@ -48,6 +48,12 @@
 
         @include('layouts.header', ['locale' => $locale, 'isArabic' => $isArabic])
 
+        @if (session('success'))
+            <div class="container mt-5 pt-5">
+                <div class="alert alert-success mb-0">{{ session('success') }}</div>
+            </div>
+        @endif
+
         @yield('content')
 
         @include('layouts.footer')

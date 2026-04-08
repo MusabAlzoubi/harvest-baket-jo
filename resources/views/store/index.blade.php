@@ -22,6 +22,23 @@
     </div>
 </div>
 
+<div class="container py-4">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h6 class="mb-1">{{ __('ui.products_count_label') }}</h6>
+                <h4 class="mb-0">{{ $stats['products_count'] }}</h4>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h6 class="mb-1">{{ __('ui.categories_count_label') }}</h6>
+                <h4 class="mb-0">{{ $stats['categories_count'] }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row g-4">
@@ -65,41 +82,56 @@
     </div>
 </div>
 
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 bg-light">
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-            <h2 class="text-primary">{{ __('ui.products_title') }}</h2>
-            <p>{{ __('ui.products_subtitle') }}</p>
+            <h2 class="text-primary">{{ __('ui.categories_title') }}</h2>
+            <p>{{ __('ui.categories_subtitle') }}</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="border rounded p-4 text-center h-100">
-                    <img src="{{ asset('img/vegetable-item-1.jpg') }}" class="img-fluid rounded mb-3" alt="{{ __('ui.tab_vegetables') }}">
-                    <h5>{{ __('ui.tab_vegetables') }}</h5>
-                    <p>{{ __('ui.cat_vegetables_desc') }}</p>
+            @forelse($categories as $category)
+                <div class="col-md-6 col-lg-3">
+                    <div class="border rounded p-3 h-100 bg-white">
+                        <img src="{{ $category->image ?: asset('img/vegetable-item-1.jpg') }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $category->localizedName(app()->getLocale()) }}">
+                        <h5><a class='text-dark' href='{{ route('store.categories.show', ['lang' => app()->getLocale(), 'category' => $category]) }}'>{{ $category->localizedName(app()->getLocale()) }}</a></h5>
+                        <p class="mb-0">{{ $category->localizedDescription(app()->getLocale()) }}</p>
+                    </div>
                 </div>
+            @empty
+                <p class="text-center">{{ __('ui.no_categories') }}</p>
+            @endforelse
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+            <div>
+                <h2 class="text-primary mb-1">{{ __('ui.products_title') }}</h2>
+                <p class="mb-0">{{ __('ui.products_subtitle') }}</p>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="border rounded p-4 text-center h-100">
-                    <img src="{{ asset('img/fruite-item-1.jpg') }}" class="img-fluid rounded mb-3" alt="{{ __('ui.tab_fruits') }}">
-                    <h5>{{ __('ui.tab_fruits') }}</h5>
-                    <p>{{ __('ui.cat_fruits_desc') }}</p>
+            <a href="{{ route('store.shop', ['lang' => app()->getLocale()]) }}" class="btn btn-outline-primary rounded-pill px-4">{{ __('ui.view_all_products') }}</a>
+        </div>
+        <div class="row g-4">
+            @forelse($featuredProducts as $product)
+                <div class="col-md-6 col-lg-3">
+                    <div class="border rounded p-3 h-100 bg-white">
+                        <img src="{{ $product->image ?: asset('img/fruite-item-1.jpg') }}" class="img-fluid rounded mb-3 store-card-image" alt="{{ $product->localizedName(app()->getLocale()) }}">
+                        <h6 class="mb-1"><a class='text-dark' href='{{ route('store.products.show', ['lang' => app()->getLocale(), 'product' => $product]) }}'>{{ $product->localizedName(app()->getLocale()) }}</a></h6>
+                        <p class="small text-muted mb-2">{{ optional($product->category)->localizedName(app()->getLocale()) }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>{{ number_format($product->displayPrice(), 2) }} {{ __('ui.currency') }}</strong>
+                            <form action="{{ route('store.cart.add', $product) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">{{ __('ui.add_to_cart') }}</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="border rounded p-4 text-center h-100">
-                    <img src="{{ asset('img/best-product-1.jpg') }}" class="img-fluid rounded mb-3" alt="{{ __('ui.tab_pantry') }}">
-                    <h5>{{ __('ui.tab_pantry') }}</h5>
-                    <p>{{ __('ui.cat_pantry_desc') }}</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="border rounded p-4 text-center h-100">
-                    <img src="{{ asset('img/featur-1.jpg') }}" class="img-fluid rounded mb-3" alt="{{ __('ui.tab_seasonal') }}">
-                    <h5>{{ __('ui.tab_seasonal') }}</h5>
-                    <p>{{ __('ui.cat_seasonal_desc') }}</p>
-                </div>
-            </div>
+            @empty
+                <p class="text-center">{{ __('ui.no_products') }}</p>
+            @endforelse
         </div>
     </div>
 </div>
