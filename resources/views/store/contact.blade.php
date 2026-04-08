@@ -28,7 +28,7 @@
                         <div class="col-lg-12">
                             <div class="h-100 rounded">
                                 <iframe class="rounded w-100"
-                                style="height: 400px;" src="https://www.google.com/maps?q=Shafa+Badran+Amman&output=embed"
+                                style="height: 400px;" src="https://www.google.com/maps?q=31.996341,35.869004&z=17&output=embed"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
@@ -45,14 +45,14 @@
                                 <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>{{ __('ui.address_label') }}</h4>
-                                    <p class="mb-2">{{ __('ui.address') }}</p>
+                                    <p class="mb-2"><a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener">{{ __('ui.address') }}</a></p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded mb-4 bg-white">
                                 <i class="fab fa-whatsapp fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>{{ __('ui.whatsapp_label') }}</h4>
-                                    <p class="mb-2">{{ __('ui.phone') }}</p>
+                                    <p class="mb-2"><a href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener">{{ __('ui.phone') }}</a></p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded bg-white">
