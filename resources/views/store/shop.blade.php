@@ -77,7 +77,10 @@
                 <div class="row g-4">
                     @forelse($products as $product)
                         @php
-                            $fallbackImage = $themeFallbackImages[$loop->index % count($themeFallbackImages)];
+                            $fallbackImages = is_array($themeFallbackImages) && count($themeFallbackImages)
+                                ? $themeFallbackImages
+                                : [asset('img/fruite-item-1.jpg')];
+                            $fallbackImage = $fallbackImages[$loop->index % count($fallbackImages)];
                             $productImage = filled($product->image) ? $product->image : $fallbackImage;
                         @endphp
                         <div class="col-md-6 col-lg-4">
