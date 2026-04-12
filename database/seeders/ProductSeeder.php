@@ -11,26 +11,56 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $categoryMap = DB::table('categories')->pluck('id', 'slug');
-        $fallbackImages = [
-            'fruite-item-1.jpg',
-            'fruite-item-2.jpg',
-            'fruite-item-3.jpg',
-            'fruite-item-4.jpg',
-            'fruite-item-5.jpg',
-            'fruite-item-6.jpg',
-            'vegetable-item-1.jpg',
-            'vegetable-item-2.jpg',
-            'vegetable-item-4.jpg',
-            'vegetable-item-5.jpg',
-            'vegetable-item-6.jpg',
-            'best-product-1.jpg',
-            'best-product-2.jpg',
-            'best-product-3.jpg',
-            'best-product-4.jpg',
-            'best-product-5.jpg',
-            'best-product-6.jpg',
-            '543185544_122104706072996258_8211625059739913983_n.jpg',
-            '584289587_122120983106996258_4875372717720327216_n.jpg',
+
+        $categoryImageKeywords = [
+            'fresh-vegetables' => 'fresh vegetables produce',
+            'leafy-greens' => 'leafy greens herbs',
+            'citrus' => 'citrus fruits lemons oranges',
+            'fresh-fruits' => 'fresh fruits market',
+            'legumes' => 'green beans legumes',
+            'frozen-ready-prep' => 'meal prep vegetable tray',
+            'pickles-olives' => 'pickles olives jar',
+            'pantry-home-products' => 'pantry grocery shelf',
+            'dates' => 'medjool dates',
+        ];
+
+        $productImageKeywords = [
+            'tomato' => 'fresh tomato',
+            'cucumber' => 'fresh cucumber',
+            'cauliflower' => 'cauliflower vegetable',
+            'zucchini' => 'zucchini vegetable',
+            'onion' => 'red onion vegetable',
+            'potato' => 'fresh potatoes',
+            'lemon' => 'fresh lemon',
+            'garlic' => 'garlic cloves',
+            'carrot' => 'fresh carrots',
+            'broccoli' => 'broccoli',
+            'red-apple' => 'red apple',
+            'green-apple' => 'green apple',
+            'yellow-apple' => 'yellow apple',
+            'navel-orange' => 'navel orange',
+            'clementine' => 'clementine fruit',
+            'pomelo' => 'pomelo fruit',
+            'avocado' => 'avocado fruit',
+            'pineapple' => 'pineapple fruit',
+            'local-banana' => 'banana bunch',
+            'somali-banana' => 'banana bunch',
+            'ready-makdous-box' => 'makdous jar',
+            'grape-leaves-box' => 'grape leaves jar',
+            'tahini-box' => 'tahini jar',
+            'pickled-cucumber-box' => 'pickled cucumber jar',
+            'halawa' => 'halva dessert',
+            'honey-box' => 'honey jar',
+            'medjool-delight-dates' => 'medjool dates',
+            'chocolate-dates-box' => 'chocolate dates',
+            'fig-jam-380g' => 'fig jam jar',
+            'strawberry-jam-380g' => 'strawberry jam jar',
+            'grape-molasses-jam-380g' => 'grape molasses',
+            'date-molasses-380g' => 'date molasses',
+            'local-eggs-tray' => 'farm eggs tray',
+            'farm-fresh-eggs-tray-30' => 'farm eggs tray',
+            'double-yolk-eggs-tray-15' => 'eggs tray',
+            'double-yolk-eggs-tray-30' => 'eggs tray',
         ];
 
         $products = [
@@ -117,7 +147,8 @@ class ProductSeeder extends Seeder
         foreach ($products as $item) {
             $slug = Str::slug($item['en']);
             $categoryId = $categoryMap[$item['category']] ?? null;
-            $imageUrl = '/img/' . $fallbackImages[abs(crc32($slug)) % count($fallbackImages)];
+            $imageKeyword = $productImageKeywords[$slug] ?? ($categoryImageKeywords[$item['category']] ?? 'fresh produce');
+            $imageUrl = 'https://source.unsplash.com/1200x900/?' . rawurlencode($imageKeyword);
             $sku = 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8));
 
             // Prevent collisions for similarly named products (e.g. hot/sweet pepper paste).
