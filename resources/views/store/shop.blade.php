@@ -15,6 +15,8 @@
     <div class="container">
         @php
             $themeFallbackImages = [
+                asset('img/543185544_122104706072996258_8211625059739913983_n.jpg'),
+                asset('img/584289587_122120983106996258_4875372717720327216_n.jpg'),
                 asset('img/fruite-item-1.jpg'),
                 asset('img/fruite-item-2.jpg'),
                 asset('img/fruite-item-3.jpg'),
@@ -28,6 +30,16 @@
                 asset('img/vegetable-item-6.jpg'),
                 asset('img/best-product-1.jpg'),
                 asset('img/best-product-2.jpg'),
+                asset('img/قصتنا بوست/1.png'),
+                asset('img/قصتنا بوست/2.png'),
+                asset('img/قصتنا بوست/3.png'),
+                asset('img/قصتنا بوست/4.png'),
+                asset('img/قصتنا بوست/5.png'),
+                asset('img/قصتنا بوست/6.png'),
+                asset('img/ميديا/1.png'),
+                asset('img/ميديا/2.png'),
+                asset('img/ميديا/3.png'),
+                asset('img/ميديا/4.png'),
             ];
         @endphp
 
