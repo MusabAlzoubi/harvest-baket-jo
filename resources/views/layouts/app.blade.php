@@ -6,16 +6,62 @@
     $locale = session('locale', 'ar');
     app()->setLocale($locale);
     $isArabic = $locale === 'ar';
+
+    $metaTitle = trim($__env->yieldContent('meta_title', __('ui.site_title')));
+    $metaDescription = trim($__env->yieldContent('meta_description', __('ui.seo_description')));
+    $metaKeywords = trim($__env->yieldContent('meta_keywords', __('ui.seo_keywords')));
+    $canonicalUrl = url()->current();
+    $googleAnalyticsId = config('services.google.analytics_id');
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $locale }}" dir="{{ $isArabic ? 'rtl' : 'ltr' }}">
 
     <head>
         <meta charset="utf-8">
-        <title>{{ __('ui.site_title') }}</title>
+        <title>{{ $metaTitle }}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+        <meta content="{{ $metaKeywords }}" name="keywords">
+        <meta content="{{ $metaDescription }}" name="description">
+        <link rel="canonical" href="{{ $canonicalUrl }}">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ $metaTitle }}">
+        <meta property="og:description" content="{{ $metaDescription }}">
+        <meta property="og:url" content="{{ $canonicalUrl }}">
+        <meta property="og:site_name" content="{{ __('ui.brand') }}">
+        <meta property="og:locale" content="{{ $locale === 'ar' ? 'ar_JO' : 'en_US' }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $metaTitle }}">
+        <meta name="twitter:description" content="{{ $metaDescription }}">
+
+        <script type="application/ld+json">
+            {!! json_encode([
+                '@context' => 'https://schema.org',
+                '@type' => 'LocalBusiness',
+                'name' => __('ui.brand'),
+                'description' => __('ui.tagline'),
+                'url' => config('app.url'),
+                'telephone' => __('ui.phone'),
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => __('ui.address'),
+                    'addressLocality' => 'Shafa Badran',
+                    'addressCountry' => 'JO',
+                ],
+                'sameAs' => [__('ui.map_url')],
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+        </script>
+
+        @if (! empty($googleAnalyticsId))
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleAnalyticsId }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '{{ $googleAnalyticsId }}');
+            </script>
+        @endif
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

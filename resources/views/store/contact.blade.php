@@ -2,6 +2,9 @@
 
 @php($activePage = 'contact')
 
+@section('meta_title', __('ui.contact_meta_title'))
+@section('meta_description', __('ui.contact_meta_description'))
+
 @section('content')
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
@@ -28,10 +31,46 @@
                         <div class="col-lg-12">
                             <div class="h-100 rounded">
                                 <iframe class="rounded w-100"
-                                style="height: 400px;" src="https://www.google.com/maps?q=31.996341,35.869004&z=17&output=embed"
+                                style="height: 400px;" src="{{ config('services.google.maps_embed_url') }}"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
+
+                        <div class="col-lg-12">
+                            <div class="bg-white p-4 rounded">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                                    <div>
+                                        <h4 class="mb-1">{{ __('ui.google_reviews_title') }}</h4>
+                                        <p class="mb-0 text-muted">{{ __('ui.google_reviews_subtitle') }}</p>
+                                    </div>
+                                    <a class="btn btn-primary rounded-pill px-4 py-2" href="{{ config('services.google.maps_review_url') }}" target="_blank" rel="noopener">
+                                        {{ __('ui.write_google_review') }}
+                                    </a>
+                                </div>
+
+                                @if ($googlePlace && ! empty($googlePlace['reviews']))
+                                    <div class="mb-3">
+                                        <span class="badge bg-success fs-6">
+                                            {{ __('ui.google_rating_summary', ['rating' => $googlePlace['rating'] ?? '-', 'total' => $googlePlace['user_ratings_total'] ?? '-']) }}
+                                        </span>
+                                    </div>
+                                    <div class="row g-3">
+                                        @foreach ($googlePlace['reviews'] as $review)
+                                            <div class="col-md-6">
+                                                <div class="border rounded p-3 h-100">
+                                                    <h6 class="mb-1">{{ $review['author_name'] }}</h6>
+                                                    <p class="small text-muted mb-2">{{ __('ui.review_rating', ['rating' => $review['rating'] ?? '-']) }} · {{ $review['relative_time_description'] }}</p>
+                                                    <p class="mb-0">{{ $review['text'] }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <p class="mb-0">{{ __('ui.google_reviews_fallback') }}</p>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="col-lg-7">
                             <form action="" class="">
                                 <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('ui.name') }}">

@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
 class StoreController extends Controller
@@ -151,7 +153,10 @@ class StoreController extends Controller
     {
         $locale = $this->resolveLocale($request);
 
-        return view('store.contact', compact('locale'));
+        return view('store.contact', [
+            'locale' => $locale,
+            'googlePlace' => $this->googlePlaceData(),
+        ]);
     }
 
     public function addToCart(Request $request, Product $product): RedirectResponse
@@ -199,6 +204,51 @@ class StoreController extends Controller
         App::setLocale($locale);
 
         return $locale;
+    }
+
+    private function googlePlaceData(): ?array
+    {
+        $apiKey = (string) config('services.google.maps_api_key');
+        $placeId = (string) config('services.google.maps_place_id');
+
+        if ($apiKey === '' || $placeId === '') {
+            return null;
+        }
+
+        return Cache::remember("google_place_details_{$placeId}", now()->addHours(6), function () use ($apiKey, $placeId) {
+            $response = Http::timeout(8)->get('https://maps.googleapis.com/maps/api/place/details/json', [
+                'place_id' => $placeId,
+                'fields' => 'name,rating,user_ratings_total,reviews,url',
+                'reviews_no_translations' => 'true',
+                'key' => $apiKey,
+            ]);
+
+            if (! $response->ok()) {
+                return null;
+            }
+
+            $result = $response->json('result');
+            if (! is_array($result)) {
+                return null;
+            }
+
+            return [
+                'name' => $result['name'] ?? null,
+                'rating' => $result['rating'] ?? null,
+                'user_ratings_total' => $result['user_ratings_total'] ?? null,
+                'url' => $result['url'] ?? config('services.google.maps_review_url'),
+                'reviews' => collect($result['reviews'] ?? [])
+                    ->take(4)
+                    ->map(fn ($review) => [
+                        'author_name' => $review['author_name'] ?? 'Google User',
+                        'rating' => $review['rating'] ?? null,
+                        'text' => $review['text'] ?? '',
+                        'relative_time_description' => $review['relative_time_description'] ?? null,
+                    ])
+                    ->values()
+                    ->all(),
+            ];
+        });
     }
 
     private function buildCartData(Request $request): array
