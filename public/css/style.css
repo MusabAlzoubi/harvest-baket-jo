@@ -418,25 +418,32 @@
 
 /*** Single Page Start ***/
 .pagination {
-    display: inline-block;
+    gap: 0.25rem;
 }
-  
-.pagination a {
+
+.pagination .page-link {
     color: var(--bs-dark);
-    padding: 10px 16px;
-    text-decoration: none;
-    transition: 0.5s;
-    border: 1px solid var(--bs-secondary);
-    margin: 0 4px;
+    border-color: #dee2e6;
+    border-radius: 0.375rem;
 }
-  
-.pagination a.active {
+
+.pagination .page-item.active .page-link {
     background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
     color: var(--bs-light);
-    border: 1px solid var(--bs-secondary);
 }
-  
-.pagination a:hover:not(.active) {background-color: var(--bs-primary)}
+
+.pagination .page-link:focus,
+.pagination .page-link:hover {
+    color: var(--bs-dark);
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.pagination .page-link svg {
+    width: 1em;
+    height: 1em;
+}
 
 .nav.nav-tabs .nav-link.active {
     border-bottom: 2px solid var(--bs-secondary) !important;

@@ -89,7 +89,7 @@
                 <div class="row g-4">
                     @forelse($products as $product)
                         @php
-                            $fallbackImages = is_array($themeFallbackImages) && count($themeFallbackImages)
+                            $fallbackImages = is_array($themeFallbackImages ?? null) && count($themeFallbackImages)
                                 ? $themeFallbackImages
                                 : [asset('img/fruite-item-1.jpg')];
                             $fallbackImage = $fallbackImages[$loop->index % count($fallbackImages)];
