@@ -84,6 +84,43 @@
 
 <div class="container-fluid py-5 bg-light">
     <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 760px;">
+            <h2 class="text-primary mb-2">{{ __('ui.story_section_title') }}</h2>
+            <p class="mb-0">{{ __('ui.story_section_subtitle') }}</p>
+        </div>
+        <div class="row g-4">
+            @for($i = 1; $i <= 6; $i++)
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="story-card">
+                        <img src="{{ asset('img/قصتنا بوست/' . $i . '.png') }}" class="img-fluid rounded" alt="{{ __('ui.story_image_alt') }} {{ $i }}">
+                    </div>
+                </div>
+            @endfor
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 760px;">
+            <h2 class="text-primary mb-2">{{ __('ui.social_qr_title') }}</h2>
+            <p class="mb-0">{{ __('ui.social_qr_subtitle') }}</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            @for($i = 1; $i <= 4; $i++)
+                <div class="col-6 col-md-3">
+                    <div class="border rounded p-3 h-100 text-center bg-white shadow-sm">
+                        <img src="{{ asset('img/ميديا/' . $i . '.png') }}" class="img-fluid rounded mb-2" alt="{{ __('ui.social_qr_alt') }} {{ $i }}">
+                        <p class="small text-muted mb-0">{{ __('ui.social_qr_scan') }}</p>
+                    </div>
+                </div>
+            @endfor
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 700px;">
             <h2 class="text-primary">{{ __('ui.categories_title') }}</h2>
             <p>{{ __('ui.categories_subtitle') }}</p>

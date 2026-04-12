@@ -1,4 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+  <img src="public/img/Primary-logo.png" width="320" alt="Harvest Basket Jo Logo">
+</p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -20,6 +22,15 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Harvest Basket Jo Brand Assets
+
+- Primary logo: `public/img/Primary-logo.png`
+- Brand asset guide (public copy): `public/📘 Brand Asset Guide Harvest Basket Jo  سلة الحصاد.pdf`
+- Brand asset guide (source/docs copy): `resources/docs/📘 Brand Asset Guide Harvest Basket Jo  سلة الحصاد.pdf`
+- Additional media/image sets:
+  - `public/img/قصتنا بوست/`
+  - `public/img/ميديا/`
 
 ## Learning Laravel
 
