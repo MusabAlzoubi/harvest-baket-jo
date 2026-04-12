@@ -2,7 +2,7 @@
 
 @php($activePage = 'shop')
 
-@section('content')
+@php($__env->startSection('content'))
 <div class="container-fluid page-header py-5">
     <h1 class="text-center text-white display-6">{{ __('ui.nav_shop') }}</h1>
     <ol class="breadcrumb justify-content-center mb-0">
@@ -122,4 +122,4 @@
         </div>
     </div>
 </div>
-@endsection
+@php($__env->stopSection())
