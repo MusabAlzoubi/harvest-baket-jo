@@ -43,7 +43,7 @@
                                         <h4 class="mb-1">{{ __('ui.google_reviews_title') }}</h4>
                                         <p class="mb-0 text-muted">{{ __('ui.google_reviews_subtitle') }}</p>
                                     </div>
-                                    <a class="btn btn-primary rounded-pill px-4 py-2" href="{{ config('services.google.maps_review_url') }}" target="_blank" rel="noopener">
+                                    <a class="btn btn-primary rounded-pill px-4 py-2" href="{{ $googlePlace['url'] ?? config('services.google.maps_review_url') }}" target="_blank" rel="noopener" data-analytics-event="review_click" data-analytics-category="reputation" data-analytics-label="contact_reviews_cta">
                                         {{ __('ui.write_google_review') }}
                                     </a>
                                 </div>
@@ -84,14 +84,14 @@
                                 <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>{{ __('ui.address_label') }}</h4>
-                                    <p class="mb-2"><a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener">{{ __('ui.address') }}</a></p>
+                                    <p class="mb-2"><a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" data-analytics-event="map_open" data-analytics-category="contact" data-analytics-label="contact_card_address">{{ __('ui.address') }}</a></p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded mb-4 bg-white">
                                 <i class="fab fa-whatsapp fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>{{ __('ui.whatsapp_label') }}</h4>
-                                    <p class="mb-2"><a href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener">{{ __('ui.phone') }}</a></p>
+                                    <p class="mb-2"><a href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener" data-analytics-event="whatsapp_click" data-analytics-category="contact" data-analytics-label="contact_card_whatsapp">{{ __('ui.phone') }}</a></p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded bg-white">

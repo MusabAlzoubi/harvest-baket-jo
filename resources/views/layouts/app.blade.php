@@ -116,6 +116,25 @@
         <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
         <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('[data-analytics-event]').forEach(function (element) {
+                    element.addEventListener('click', function () {
+                        if (typeof gtag !== 'function') {
+                            return;
+                        }
+
+                        gtag('event', element.dataset.analyticsEvent, {
+                            event_category: element.dataset.analyticsCategory || 'engagement',
+                            event_label: element.dataset.analyticsLabel || element.textContent.trim(),
+                            value: 1,
+                        });
+                    });
+                });
+            });
+        </script>
+
         <!-- Template Javascript -->
         <script src="{{ asset('js/main.js') }}"></script>
     </body>
