@@ -11,6 +11,27 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $categoryMap = DB::table('categories')->pluck('id', 'slug');
+        $fallbackImages = [
+            'fruite-item-1.jpg',
+            'fruite-item-2.jpg',
+            'fruite-item-3.jpg',
+            'fruite-item-4.jpg',
+            'fruite-item-5.jpg',
+            'fruite-item-6.jpg',
+            'vegetable-item-1.jpg',
+            'vegetable-item-2.jpg',
+            'vegetable-item-4.jpg',
+            'vegetable-item-5.jpg',
+            'vegetable-item-6.jpg',
+            'best-product-1.jpg',
+            'best-product-2.jpg',
+            'best-product-3.jpg',
+            'best-product-4.jpg',
+            'best-product-5.jpg',
+            'best-product-6.jpg',
+            '543185544_122104706072996258_8211625059739913983_n.jpg',
+            '584289587_122120983106996258_4875372717720327216_n.jpg',
+        ];
 
         $products = [
             ['ar' => 'بندوره', 'en' => 'Tomato', 'category' => 'fresh-vegetables', 'price' => 0.35, 'unit' => 'كيلو', 'desc' => 'بندورة طازجة يومياً.'],
@@ -96,7 +117,7 @@ class ProductSeeder extends Seeder
         foreach ($products as $item) {
             $slug = Str::slug($item['en']);
             $categoryId = $categoryMap[$item['category']] ?? null;
-            $imageUrl = 'https://source.unsplash.com/1200x900/?' . urlencode($item['en'] . ',food');
+            $imageUrl = '/img/' . $fallbackImages[abs(crc32($slug)) % count($fallbackImages)];
             $sku = 'HB-' . strtoupper(Str::substr(Str::slug($item['en'], ''), 0, 8));
 
             // Prevent collisions for similarly named products (e.g. hot/sweet pepper paste).
