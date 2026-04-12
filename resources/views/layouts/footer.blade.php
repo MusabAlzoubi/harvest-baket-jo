@@ -38,9 +38,9 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-item">
                     <h4 class="text-light mb-3">{{ __('ui.contact_info') }}</h4>
-                    <p>📍 <a class="text-white-50" href="{{ __('ui.map_url') }}" target="_blank" rel="noopener">{{ __('ui.address') }}</a></p>
+                    <p>📍 <a class="text-white-50" href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" data-analytics-event="map_open" data-analytics-category="footer" data-analytics-label="footer_address">{{ __('ui.address') }}</a></p>
                     <p>📞 {{ __('ui.phone') }}</p>
-                    <p>💬 WhatsApp: <a class="text-white-50" href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener">{{ __('ui.phone') }}</a></p>
+                    <p>💬 WhatsApp: <a class="text-white-50" href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener" data-analytics-event="whatsapp_click" data-analytics-category="footer" data-analytics-label="footer_whatsapp">{{ __('ui.phone') }}</a></p>
                     <p>🧺 {{ __('ui.choose_like_home') }}</p>
                 </div>
             </div>

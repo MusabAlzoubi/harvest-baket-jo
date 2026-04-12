@@ -124,4 +124,16 @@ return [
 
     'checkout_title' => 'إتمام الطلب',
     'order_summary' => 'ملخص الطلب',
+
+    'seo_description' => 'سلة الحصاد في شفا بدران: خضار وفواكه طازجة يومياً، مونة بلدية، خدمة واتساب سريعة وتوصيل قريب منذ 1969.',
+    'seo_keywords' => 'سلة الحصاد, خضار وفواكه, شفا بدران, خضار طازجة, فواكه طازجة, أسعار يومية, توصيل خضار',
+    'contact_meta_title' => 'اتصل بسلة الحصاد | الموقع والتقييمات',
+    'contact_meta_description' => 'تواصل مع سلة الحصاد مباشرة، شاهد موقعنا على Google Maps، واطلع على تقييمات العملاء الحديثة.',
+    'google_reviews_title' => 'تقييمات Google Maps',
+    'google_reviews_subtitle' => 'شاهد آخر التقييمات أو اكتب تقييمك مباشرة على جوجل ماب.',
+    'write_google_review' => 'اكتب تقييمك على Google Maps',
+    'google_rating_summary' => 'التقييم :rating من 5 (عدد التقييمات: :total)',
+    'review_rating' => 'التقييم: :rating/5',
+    'google_reviews_fallback' => 'سيتم عرض التقييمات هنا بعد تفعيل Google Maps Place API. حالياً يمكنك فتح جوجل ماب وكتابة تقييمك مباشرة.',
+
 ];

@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'google' => [
+        'analytics_id' => env('GOOGLE_ANALYTICS_ID'),
+        'maps_embed_url' => env('GOOGLE_MAPS_EMBED_URL', 'https://www.google.com/maps?q=31.996341,35.869004&z=17&output=embed'),
+        'maps_place_id' => env('GOOGLE_MAPS_PLACE_ID'),
+        'maps_review_url' => env('GOOGLE_MAPS_REVIEW_URL', env('APP_URL')),
+        'maps_api_key' => env('GOOGLE_MAPS_API_KEY'),
+    ],
+
 ];

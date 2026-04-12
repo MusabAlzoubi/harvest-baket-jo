@@ -6,12 +6,12 @@
     <div class="container topbar bg-primary d-none d-lg-block">
         <div class="d-flex justify-content-between">
             <div class="top-info ps-2">
-                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" class="text-white">{{ __('ui.address') }}</a></small>
+                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" class="text-white" data-analytics-event="map_open" data-analytics-category="contact" data-analytics-label="topbar_address">{{ __('ui.address') }}</a></small>
                 <small class="me-3"><i class="fas fa-phone-alt me-2 text-secondary"></i><a href="tel:+962779154999" class="text-white">{{ __('ui.phone') }}</a></small>
             </div>
             <div class="top-link pe-2">
-                <a href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener" class="text-white"><small class="text-white mx-2">{{ __('ui.order_whatsapp') }}</small>/</a>
-                <a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" class="text-white"><small class="text-white ms-2">{{ __('ui.rate_us') }}</small></a>
+                <a href="{{ __('ui.whatsapp_url') }}" target="_blank" rel="noopener" class="text-white" data-analytics-event="whatsapp_click" data-analytics-category="contact" data-analytics-label="topbar_whatsapp"><small class="text-white mx-2">{{ __('ui.order_whatsapp') }}</small>/</a>
+                <a href="{{ __('ui.map_url') }}" target="_blank" rel="noopener" class="text-white" data-analytics-event="review_click" data-analytics-category="reputation" data-analytics-label="topbar_rate_us"><small class="text-white ms-2">{{ __('ui.rate_us') }}</small></a>
             </div>
         </div>
     </div>

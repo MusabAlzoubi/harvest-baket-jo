@@ -124,4 +124,16 @@ return [
 
     'checkout_title' => 'Checkout',
     'order_summary' => 'Order summary',
+
+    'seo_description' => 'Harvest Basket in Shafa Badran: fresh fruits and vegetables, traditional pantry essentials, quick WhatsApp ordering, and trusted service since 1969.',
+    'seo_keywords' => 'Harvest Basket, fresh vegetables, fresh fruits, Shafa Badran, grocery delivery, daily prices, Jordan produce',
+    'contact_meta_title' => 'Contact Harvest Basket | Location & Reviews',
+    'contact_meta_description' => 'Reach Harvest Basket directly, view our Google Maps location, and read the latest customer reviews.',
+    'google_reviews_title' => 'Google Maps Reviews',
+    'google_reviews_subtitle' => 'Read recent customer feedback or write your review directly on Google Maps.',
+    'write_google_review' => 'Write a Google Maps Review',
+    'google_rating_summary' => 'Rating :rating/5 (Total reviews: :total)',
+    'review_rating' => 'Rating: :rating/5',
+    'google_reviews_fallback' => 'Reviews will appear here after enabling Google Maps Place API. For now, you can open Google Maps and add your review directly.',
+
 ];
