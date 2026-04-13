@@ -17,7 +17,10 @@
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="{{ route('store.home', ['lang' => $locale ?? app()->getLocale()]) }}" class="navbar-brand"><h1 class="text-primary display-6">{{ __('ui.brand') }}</h1></a>
+            <a href="{{ route('store.home', ['lang' => $locale ?? app()->getLocale()]) }}" class="navbar-brand d-flex align-items-center gap-2">
+                <img src="{{ asset('img/Primary-logo.png') }}" alt="{{ __('ui.brand') }}" class="img-fluid" style="height: 56px; width: auto;">
+                <h1 class="text-primary display-6 mb-0 fs-3">{{ __('ui.brand') }}</h1>
+            </a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>

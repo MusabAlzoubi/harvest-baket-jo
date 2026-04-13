@@ -4,9 +4,12 @@
         <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <a href="#">
-                        <h1 class="text-primary mb-0">{{ __('ui.brand') }}</h1>
-                        <p class="text-secondary mb-0">{{ __('ui.tagline') }}</p>
+                    <a href="{{ route('store.home', ['lang' => app()->getLocale()]) }}" class="d-inline-flex align-items-center gap-2 text-decoration-none">
+                        <img src="{{ asset('img/Primary-logo.png') }}" alt="{{ __('ui.brand') }}" class="img-fluid" style="height: 52px; width: auto;">
+                        <div>
+                            <h1 class="text-primary mb-0 fs-3">{{ __('ui.brand') }}</h1>
+                            <p class="text-secondary mb-0">{{ __('ui.tagline') }}</p>
+                        </div>
                     </a>
                 </div>
                 <div class="col-lg-8">
